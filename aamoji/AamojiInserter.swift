@@ -18,7 +18,7 @@ class AamojiInserter: NSObject {
     
     var inserted: Bool? {
         get {
-            if let replacements = _defaults.arrayForKey(ReplacementsKey) as? [[NSObject: NSObject]] {
+            if let replacements = _defaults.array(forKey: ReplacementsKey) as? [[String: Any]] {
                 for replacement in replacements {
                     if let shortcut = replacement[ReplacementShortcutKey] as? String {
                         if _allShortcuts.contains(shortcut) {
@@ -33,7 +33,7 @@ class AamojiInserter: NSObject {
         }
         set(insertOpt) {
             if let insert = insertOpt {
-                if let replacements = _defaults.arrayForKey(ReplacementsKey) as? [[NSObject: NSObject]] {
+                if _defaults.array(forKey: ReplacementsKey) != nil {
                     if insert {
                         _insertReplacements()
                     } else {
@@ -52,59 +52,59 @@ class AamojiInserter: NSObject {
     
     private func _insertReplacements() {
         // make the change in sqlite:
-        let db = Database(_pathForDatabase())
-        var pk = db.scalar("SELECT max(Z_PK) FROM 'ZUSERDICTIONARYENTRY'") as? Int ?? 0
+        let db = try! Connection(_pathForDatabase())
+        var pk = try! db.scalar("SELECT max(Z_PK) FROM 'ZUSERDICTIONARYENTRY'") as? Int ?? 0
         let timestamp = Int64(NSDate().timeIntervalSince1970)
         for entry in aamojiEntries() {
             // key, timestamp, with, replace
             let replace = entry[ReplacementShortcutKey] as! String
             let with = entry[ReplacementReplaceWithKey] as! String
-            db.run("INSERT INTO 'ZUSERDICTIONARYENTRY' VALUES(?,1,1,0,0,0,0,?,NULL,NULL,NULL,NULL,NULL,?,?,NULL)", [pk, timestamp, with, replace])
-            pk++
+            try! db.run("INSERT INTO 'ZUSERDICTIONARYENTRY' VALUES(?,1,1,0,0,0,0,?,NULL,NULL,NULL,NULL,NULL,?,?,NULL)", [pk, timestamp, with, replace])
+            pk += 1
         }
         
         // make the change in nsuserdefaults:
-        let existingReplacementEntries = _defaults.arrayForKey(ReplacementsKey) as! [[NSObject: NSObject]]
+        let existingReplacementEntries = _defaults.array(forKey: ReplacementsKey) as! [[String: Any]]
         _setReplacementsInUserDefaults(existingReplacementEntries + aamojiEntries())
     }
     
     private func _deleteReplacements() {
         // make the change in sqlite:
-        let db = Database(_pathForDatabase())
+        let db = try! Connection(_pathForDatabase())
         for entry in aamojiEntries() {
             let shortcut = entry[ReplacementShortcutKey] as! String
-            db.run("DELETE FROM 'ZUSERDICTIONARYENTRY' WHERE ZSHORTCUT = ?", [shortcut])
+            try! db.run("DELETE FROM 'ZUSERDICTIONARYENTRY' WHERE ZSHORTCUT = ?", [shortcut])
         }
         
         // make the change in nsuserdefaults:
-        let existingReplacementEntries = _defaults.arrayForKey(ReplacementsKey) as! [[NSObject: NSObject]]
+        let existingReplacementEntries = _defaults.array(forKey: ReplacementsKey) as! [[String: Any]]
         let withoutAamojiEntries = existingReplacementEntries.filter({ !self._allShortcuts.contains($0[ReplacementShortcutKey] as! String) })
         _setReplacementsInUserDefaults(withoutAamojiEntries)
     }
     
     private func _pathForDatabase() -> String {
-        let library = NSSearchPathForDirectoriesInDomains(.LibraryDirectory, .UserDomainMask, true).first as! String
-        let container1 = library.stringByAppendingPathComponent("Dictionaries/CoreDataUbiquitySupport")
-        let contents = NSFileManager.defaultManager().contentsOfDirectoryAtPath(container1, error: nil) as! [String]
+        let library = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).first!)
+        let container1 = library.appendingPathComponent("Dictionaries/CoreDataUbiquitySupport")
+        let contents = try! FileManager.default.contentsOfDirectory(atPath: container1.path)
         let userName = NSUserName()
-        let matchingDirname = contents.filter({ $0.startsWith(userName) }).first!
-        let container2 = container1.stringByAppendingPathComponent(matchingDirname).stringByAppendingPathComponent("UserDictionary")
+        let matchingDirname = contents.filter({ $0.starts(with: userName) }).first!
+        let container2 = container1.appendingPathComponent(matchingDirname).appendingPathComponent("UserDictionary")
         // find the active icloud directory first, then fall back to local:
         var subdir = "local"
-        for child in NSFileManager.defaultManager().contentsOfDirectoryAtPath(container2, error: nil) as! [String] {
-            let containerDir = container2.stringByAppendingPathComponent(child).stringByAppendingPathComponent("container")
-            if NSFileManager.defaultManager().fileExistsAtPath(containerDir) {
+        for child in try! FileManager.default.contentsOfDirectory(atPath: container2.path) {
+            let containerDir = container2.appendingPathComponent(child).appendingPathComponent("container")
+            if FileManager.default.fileExists(atPath: containerDir.path) {
                 subdir = child
             }
         }
-        let path = container2.stringByAppendingPathComponent(subdir).stringByAppendingPathComponent("store/UserDictionary.db")
-        return path
+        let path = container2.appendingPathComponent(subdir).appendingPathComponent("store/UserDictionary.db")
+        return path.path
     }
     
-    private func _setReplacementsInUserDefaults(replacements: [[NSObject: NSObject]]) {
-        var globalDomain = _defaults.persistentDomainForName(NSGlobalDomain)!
+    private func _setReplacementsInUserDefaults(_ replacements: [[String: Any]]) {
+        var globalDomain = _defaults.persistentDomain(forName: UserDefaults.globalDomain)!
         globalDomain[ReplacementsKey] = replacements
-        _defaults.setPersistentDomain(globalDomain, forName: NSGlobalDomain)
+        _defaults.setPersistentDomain(globalDomain, forName: UserDefaults.globalDomain)
         _defaults.synchronize()
     }
     
@@ -113,9 +113,9 @@ class AamojiInserter: NSObject {
         return Set(entries.map({ $0[ReplacementShortcutKey] as! String }))
     }()
     
-    func aamojiEntries() -> [[NSObject: NSObject]] {
-        let emojiInfoJson = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("emoji", ofType: "json")!)!
-        let emojiInfo = NSJSONSerialization.JSONObjectWithData(emojiInfoJson, options: nil, error: nil) as! [[String: AnyObject]]
+    func aamojiEntries() -> [[String: Any]] {
+        let emojiInfoJson = try! Data(contentsOf: Bundle.main.url(forResource: "emoji", withExtension: "json")!)
+        let emojiInfo = try! JSONSerialization.jsonObject(with: emojiInfoJson) as! [[String: AnyObject]]
         
         var emojiByShortcut = [String: String]()
         var emojiShortcutPrecendences = [String: Double]()
@@ -135,7 +135,7 @@ class AamojiInserter: NSObject {
         }
         
         let entries = Array(emojiByShortcut.keys).map() {
-            (shortcut) -> [NSObject: NSObject] in
+            (shortcut) -> [String: Any] in
             let emoji = emojiByShortcut[shortcut]!
             return [ReplacementOnKey: 1, ReplacementShortcutKey: "aa" + shortcut, ReplacementReplaceWithKey: emoji]
         }
@@ -143,7 +143,7 @@ class AamojiInserter: NSObject {
         return entries
     }
     
-    private func _shortcutsAndPrecedencesForEmojiInfoEntry(entry: [String: AnyObject]) -> [(String, Double)] {
+    private func _shortcutsAndPrecedencesForEmojiInfoEntry(_ entry: [String: AnyObject]) -> [(String, Double)] {
         var results = [(String, Double)]()
         if let aliases = entry["aliases"] as? [String] {
             for alias in aliases {
@@ -151,12 +151,12 @@ class AamojiInserter: NSObject {
             }
         }
         if let description = entry["description"] as? String {
-            let words = description.componentsSeparatedByString(" ")
+            let words = description.split(separator: " ")
             if let firstWord = words.first {
-                results.append((firstWord, 2))
+                results.append((String(firstWord), 2))
             }
             for word in words {
-                results.append((word, 1))
+                results.append((String(word), 1))
             }
         }
         if let tags = entry["tags"] as? [String] {
@@ -167,15 +167,15 @@ class AamojiInserter: NSObject {
         return results
     }
     
-    private var _allowedCharsInShortcutStrings = NSCharacterSet(charactersInString: "abcdefghijklmnopqrstuvwxyz0123456789_:")
-    private func _processShortcutIfAllowed(var shortcut: String) -> String? {
-        shortcut = shortcut.lowercaseString
-        if shortcut.containsOnlyCharactersFromSet(_allowedCharsInShortcutStrings) {
-            return shortcut
+    private var _allowedCharsInShortcutStrings = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyz0123456789_:")
+    private func _processShortcutIfAllowed(_ shortcut: String) -> String? {
+        let lowered = shortcut.lowercased()
+        if lowered.containsOnlyCharactersFromSet(set: _allowedCharsInShortcutStrings) {
+            return lowered
         } else {
             return nil
         }
     }
     
-    private var _defaults = NSUserDefaults()
+    private var _defaults = UserDefaults()
 }

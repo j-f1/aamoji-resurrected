@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationWillFinishLaunching(aNotification: NSNotification) {
-        window.titleVisibility = .Hidden
+        window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
         _updateUI()
     }
@@ -39,18 +39,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let inserted = inserter.inserted {
             inserter.inserted = !inserted
         } else {
-            println("ERROR")
+            print("ERROR")
         }
         _updateUI()
-        delay(0.5, { () -> () in
+        delay(.milliseconds(500)) { () -> () in
             // just in case (seems to be necessary sometimes)
             self._updateUI()
-        })
+        }
     }
     
     private func _updateUI() {
         if let inserted = inserter.inserted {
-            button.enabled = true
+            button.isEnabled = true
             button.title = inserted ? "💔 Remove aamoji shortcuts 💔" : "✨ Add aamoji shortcuts 💫"
             if inserted {
                 headline.stringValue = "⚡ aamoji is on ⚡"
@@ -59,24 +59,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 headline.stringValue = "Type emoji in any app*"
                 subtitle.stringValue = "Prefix the name of an emoji with \"aa\", and it'll autocorrect to the emoji itself."
             }
-            postInstallButtons.hidden = !inserted
+            postInstallButtons.isHidden = !inserted
         } else {
-            button.enabled = false
+            button.isEnabled = false
             button.title = "🚨 Error 🚨"
         }
     }
     
     @IBAction func launchNotes(sender: NSButton) {
-        var launchDelay: Double = NSWorkspace.sharedWorkspace().terminateApp("com.apple.Notes") ? 1 : 0
-        if let notesPath = NSWorkspace.sharedWorkspace().absolutePathForAppBundleWithIdentifier("com.apple.Notes") {
-            delay(launchDelay, { () -> () in
-                NSWorkspace.sharedWorkspace().launchApplication(notesPath)
-            })
+        let launchDelay = NSWorkspace.shared.terminateApp(bundleID: "com.apple.Notes") ? 1 : 0
+        if let notesPath = NSWorkspace.shared.absolutePathForApplication(withBundleIdentifier: "com.apple.Notes") {
+            delay(.seconds(launchDelay)) { () -> () in
+                NSWorkspace.shared.launchApplication(notesPath)
+            }
         }
     }
     
     @IBAction func showShortcutsList(sender: NSButton) {
-        shortcutsListWebview.mainFrame.loadHTMLString(inserter.shortcutListHTML(), baseURL: NSURL(string: "about:blank"))
+        shortcutsListWebview.mainFrame.loadHTMLString(inserter.shortcutListHTML(), baseURL: URL(string: "about:blank"))
         shortcutsListWindow.makeKeyAndOrderFront(sender)
     }
 }

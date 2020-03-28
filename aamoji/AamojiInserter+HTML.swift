@@ -10,7 +10,7 @@ import Foundation
 
 extension AamojiInserter {
     func shortcutListHTML() -> String {
-        let template = NSString(contentsOfFile: NSBundle.mainBundle().pathForResource("ShortcutListTemplate", ofType: "html")!, encoding: NSUTF8StringEncoding, error: nil)!
+        let template = Bundle.main.path(forResource: "ShortcutListTemplate", ofType: "html")!
         
         var shortcutsForEmoji = [String: [String]]()
         for entry in aamojiEntries() {
@@ -21,10 +21,10 @@ extension AamojiInserter {
         
         var html = ""
         for (emoji, shortcuts) in shortcutsForEmoji {
-            let allShortcuts = ", ".join(shortcuts)
+            let allShortcuts = shortcuts.joined(separator: ", ")
             html += "<li><span class='emoji'>\(emoji)</span> \(allShortcuts)</li>\n"
         }
         
-        return template.stringByReplacingOccurrencesOfString("<!--SHORTCUTS-->", withString: html)
+        return template.replacingOccurrences(of: "<!--SHORTCUTS-->", with: html)
     }
 }

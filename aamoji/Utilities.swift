@@ -8,20 +8,15 @@
 
 import AppKit
 
-func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+func delay(_ delay: DispatchTimeInterval, closure: @escaping () -> Void) {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now().advanced(by: delay), execute: closure)
 }
 
 extension NSWorkspace {
     func terminateApp(bundleID: String) -> Bool {
-        for app in runningApplications as! [NSRunningApplication] {
+        for app in runningApplications {
             if let appBundleID = app.bundleIdentifier {
-                if appBundleID.lowercaseString == bundleID.lowercaseString {
+                if appBundleID.lowercased() == bundleID.lowercased() {
                     return app.terminate()
                 }
             }
@@ -31,14 +26,7 @@ extension NSWorkspace {
 }
 
 extension String {
-    func containsOnlyCharactersFromSet(set: NSCharacterSet) -> Bool {
-        return componentsSeparatedByCharactersInSet(set.invertedSet).count == 1
-    }
-    func startsWith(prefix: String) -> Bool {
-        if let range = self.rangeOfString(prefix) {
-            return range.startIndex == self.startIndex
-        } else {
-            return false
-        }
+    func containsOnlyCharactersFromSet(set: CharacterSet) -> Bool {
+        return self.trimmingCharacters(in: set) == ""
     }
 }
