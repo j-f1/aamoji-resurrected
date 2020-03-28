@@ -45,6 +45,8 @@
 		5F963FED1B0C330D00F5B3BF /* AamojiInserter+HTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AamojiInserter+HTML.swift"; sourceTree = "<group>"; };
 		5F963FEF1B0C332B00F5B3BF /* ShortcutListTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ShortcutListTemplate.html; sourceTree = "<group>"; };
 		5F963FF51B0C3A2C00F5B3BF /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
+		8524033F242F8771009B048F /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		85240340242F8771009B048F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,8 @@
 		5F963FBE1B0C09F800F5B3BF = {
 			isa = PBXGroup;
 			children = (
+				8524033F242F8771009B048F /* LICENSE */,
+				85240340242F8771009B048F /* README.md */,
 				5F963FC91B0C09F900F5B3BF /* aamoji */,
 				5F963FDA1B0C09F900F5B3BF /* aamojiTests */,
 				5F963FC81B0C09F900F5B3BF /* Products */,

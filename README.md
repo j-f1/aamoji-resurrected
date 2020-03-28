@@ -7,3 +7,5 @@ aasmile 👉 😄
 aaamerica 👉 🇺🇸 
 aaheart 👉 ❤️ 
 ````
+
+Emoji are sourced from [gemoji](https://github.com/github/gemoji/blob/master/db/emoji.json)
