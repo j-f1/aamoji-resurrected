@@ -10,7 +10,7 @@ import Foundation
 
 extension AamojiInserter {
     func shortcutListHTML() -> String {
-        let template = Bundle.main.path(forResource: "ShortcutListTemplate", ofType: "html")!
+        let template = try! String(contentsOf: Bundle.main.url(forResource: "ShortcutListTemplate", withExtension: "html")!)
         
         var shortcutsForEmoji = [String: [String]]()
         for entry in aamojiEntries() {

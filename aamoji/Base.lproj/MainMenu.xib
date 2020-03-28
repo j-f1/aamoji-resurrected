@@ -675,7 +675,7 @@
             </items>
             <point key="canvasLocation" x="139" y="154"/>
         </menu>
-        <window title="aamoji" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+        <window title="aamoji" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="370" y="174" width="480" height="479"/>
@@ -685,30 +685,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="479"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <visualEffectView appearanceType="aqua" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="y3S-TM-1yJ">
+                    <visualEffectView appearanceType="aqua" blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="y3S-TM-1yJ">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="479"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="4uX-6b-sNE">
                                 <rect key="frame" x="0.0" y="343" width="480" height="136"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYN-iD-hb4">
-                                        <rect key="frame" x="139" y="78" width="203" height="23"/>
+                                        <rect key="frame" x="-1" y="78" width="484" height="23"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Type emoji in any app*" id="327-VV-1XV">
                                             <font key="font" metaFont="system" size="20"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xuu-Jx-zFe">
-                                        <rect key="frame" x="106" y="35" width="269" height="34"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xuu-Jx-zFe">
+                                        <rect key="frame" x="109" y="36" width="264" height="32"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Prefix the name of an emoji with &quot;aa&quot;, and it'll autocorrect to the emoji itself." id="bg5-XA-cxr">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zMO-QJ-NvE" userLabel="Post-install buttons">
-                                        <rect key="frame" x="101" y="9" width="278" height="18"/>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="zMO-QJ-NvE" userLabel="Post-install buttons">
+                                        <rect key="frame" x="103" y="10" width="275" height="18"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bbl-Rr-X0V">
                                                 <rect key="frame" x="0.0" y="-1" width="159" height="19"/>
@@ -745,6 +745,7 @@
                                     <constraint firstAttribute="centerY" secondItem="xuu-Jx-zFe" secondAttribute="centerY" constant="-16" id="4Ps-Dz-4Ud"/>
                                     <constraint firstItem="zMO-QJ-NvE" firstAttribute="top" secondItem="xuu-Jx-zFe" secondAttribute="bottom" constant="8" id="6Ou-Vl-B38"/>
                                     <constraint firstAttribute="centerX" secondItem="UYN-iD-hb4" secondAttribute="centerX" constant="-0.5" id="ANj-Zv-Xmo"/>
+                                    <constraint firstItem="UYN-iD-hb4" firstAttribute="width" secondItem="4uX-6b-sNE" secondAttribute="width" id="CKJ-jg-rHs"/>
                                     <constraint firstItem="xuu-Jx-zFe" firstAttribute="centerX" secondItem="zMO-QJ-NvE" secondAttribute="centerX" id="NJt-nH-Ffr"/>
                                     <constraint firstAttribute="centerY" secondItem="UYN-iD-hb4" secondAttribute="centerY" constant="21" id="l07-6J-9q9"/>
                                     <constraint firstAttribute="centerX" secondItem="xuu-Jx-zFe" secondAttribute="centerX" constant="-0.5" id="mJP-xp-9vz"/>

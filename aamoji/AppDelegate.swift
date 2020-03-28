@@ -15,16 +15,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
 
 
-    func applicationWillFinishLaunching(aNotification: NSNotification) {
+    func applicationWillFinishLaunching(_: Notification) {
         window.titleVisibility = .hidden
         window.titlebarAppearsTransparent = true
         _updateUI()
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
-        
-    }
-    
     let inserter = AamojiInserter()
     
     @IBOutlet var button: NSButton!
@@ -35,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var shortcutsListWindow: NSWindow!
     @IBOutlet var shortcutsListWebview: WKWebView!
     
-    @IBAction func toggleInserted(sender: NSButton) {
+    @IBAction func toggleInserted(_ sender: NSButton) {
         if let inserted = inserter.inserted {
             inserter.inserted = !inserted
         } else {
@@ -66,7 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    @IBAction func launchNotes(sender: NSButton) {
+    @IBAction func launchNotes(_ sender: NSButton) {
         let launchDelay = NSWorkspace.shared.terminateApp(bundleID: "com.apple.Notes") ? 1 : 0
         if let notesPath = NSWorkspace.shared.absolutePathForApplication(withBundleIdentifier: "com.apple.Notes") {
             delay(.seconds(launchDelay)) { () -> () in
@@ -75,7 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    @IBAction func showShortcutsList(sender: NSButton) {
+    @IBAction func showShortcutsList(_ sender: NSButton) {
         shortcutsListWebview.loadHTMLString(inserter.shortcutListHTML(), baseURL: URL(string: "about:blank"))
         shortcutsListWindow.makeKeyAndOrderFront(sender)
     }
