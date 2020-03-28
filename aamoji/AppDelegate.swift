@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var postInstallButtons: NSView!
     
     @IBOutlet var shortcutsListWindow: NSWindow!
-    @IBOutlet var shortcutsListWebview: WebView!
+    @IBOutlet var shortcutsListWebview: WKWebView!
     
     @IBAction func toggleInserted(sender: NSButton) {
         if let inserted = inserter.inserted {
@@ -76,7 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func showShortcutsList(sender: NSButton) {
-        shortcutsListWebview.mainFrame.loadHTMLString(inserter.shortcutListHTML(), baseURL: URL(string: "about:blank"))
+        shortcutsListWebview.loadHTMLString(inserter.shortcutListHTML(), baseURL: URL(string: "about:blank"))
         shortcutsListWindow.makeKeyAndOrderFront(sender)
     }
 }

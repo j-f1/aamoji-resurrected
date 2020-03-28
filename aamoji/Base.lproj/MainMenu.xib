@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7702"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="7702"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16092.1"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="16092.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -18,7 +18,7 @@
                 <outlet property="button" destination="rYA-SB-I0b" id="7WW-EQ-xkB"/>
                 <outlet property="headline" destination="UYN-iD-hb4" id="hrX-4C-sMC"/>
                 <outlet property="postInstallButtons" destination="zMO-QJ-NvE" id="WJj-h4-6s0"/>
-                <outlet property="shortcutsListWebview" destination="AQs-Gk-TGa" id="zFZ-Wm-AQX"/>
+                <outlet property="shortcutsListWebview" destination="DMH-yL-Ue7" id="saf-HP-LYD"/>
                 <outlet property="shortcutsListWindow" destination="843-fN-CoK" id="PAM-d5-din"/>
                 <outlet property="subtitle" destination="xuu-Jx-zFe" id="nxH-2R-Lqb"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -673,15 +673,16 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="139" y="154"/>
         </menu>
         <window title="aamoji" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="370" y="174" width="480" height="479"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <value key="minSize" type="size" width="480" height="479"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="1" width="480" height="479"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="479"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <visualEffectView appearanceType="aqua" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="y3S-TM-1yJ">
@@ -691,7 +692,7 @@
                                 <rect key="frame" x="0.0" y="343" width="480" height="136"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UYN-iD-hb4">
-                                        <rect key="frame" x="136" y="77" width="209" height="24"/>
+                                        <rect key="frame" x="139" y="78" width="203" height="23"/>
                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Type emoji in any app*" id="327-VV-1XV">
                                             <font key="font" metaFont="system" size="20"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -710,7 +711,7 @@
                                         <rect key="frame" x="101" y="9" width="278" height="18"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bbl-Rr-X0V">
-                                                <rect key="frame" x="0.0" y="-1" width="161" height="19"/>
+                                                <rect key="frame" x="0.0" y="-1" width="159" height="19"/>
                                                 <buttonCell key="cell" type="roundRect" title="Launch Notes to try it out" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Loc-bn-G8Y">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="cellTitle"/>
@@ -720,7 +721,7 @@
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TiJ-I8-ZbD">
-                                                <rect key="frame" x="169" y="-1" width="109" height="19"/>
+                                                <rect key="frame" x="167" y="-1" width="108" height="19"/>
                                                 <buttonCell key="cell" type="roundRect" title="List all shortcuts" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LZO-ki-fI7">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="cellTitle"/>
@@ -761,7 +762,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Circle" id="iYY-xk-MFz"/>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rYA-SB-I0b">
-                                <rect key="frame" x="184" y="55" width="112" height="25"/>
+                                <rect key="frame" x="183.5" y="56" width="113" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="112" id="btq-np-7Ic"/>
                                 </constraints>
@@ -774,9 +775,9 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GQ0-nv-fIJ">
-                                <rect key="frame" x="103" y="10" width="275" height="11"/>
+                                <rect key="frame" x="104" y="10" width="273" height="11"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="*Except Chrome, because Chrome doesn't support emoji. 😁" id="zly-dK-Wce">
-                                    <font key="font" metaFont="miniSystem"/>
+                                    <font key="font" metaFont="label" size="9"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -809,27 +810,28 @@
             </view>
             <point key="canvasLocation" x="276" y="441.5"/>
         </window>
-        <window title="Shortcuts" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="843-fN-CoK" customClass="NSPanel">
+        <window title="Shortcuts" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="843-fN-CoK" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="120" y="68" width="276" height="378"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="oOQ-2a-RTu">
                 <rect key="frame" x="0.0" y="0.0" width="276" height="378"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <webView translatesAutoresizingMaskIntoConstraints="NO" id="AQs-Gk-TGa">
+                    <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMH-yL-Ue7">
                         <rect key="frame" x="0.0" y="0.0" width="276" height="378"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO">
-                            <nil key="identifier"/>
-                        </webPreferences>
-                    </webView>
+                        <wkWebViewConfiguration key="configuration">
+                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                            <wkPreferences key="preferences"/>
+                        </wkWebViewConfiguration>
+                    </wkWebView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="AQs-Gk-TGa" firstAttribute="leading" secondItem="oOQ-2a-RTu" secondAttribute="leading" id="Ywc-Ru-GZk"/>
-                    <constraint firstAttribute="bottom" secondItem="AQs-Gk-TGa" secondAttribute="bottom" id="eNU-l6-0fw"/>
-                    <constraint firstItem="AQs-Gk-TGa" firstAttribute="top" secondItem="oOQ-2a-RTu" secondAttribute="top" id="jmT-zN-1dU"/>
-                    <constraint firstAttribute="trailing" secondItem="AQs-Gk-TGa" secondAttribute="trailing" id="zI7-G2-GwU"/>
+                    <constraint firstItem="DMH-yL-Ue7" firstAttribute="top" secondItem="oOQ-2a-RTu" secondAttribute="top" id="4YH-Hj-7ta"/>
+                    <constraint firstAttribute="bottom" secondItem="DMH-yL-Ue7" secondAttribute="bottom" id="6DF-Zk-xBh"/>
+                    <constraint firstItem="DMH-yL-Ue7" firstAttribute="leading" secondItem="oOQ-2a-RTu" secondAttribute="leading" id="Hkb-SR-ywn"/>
+                    <constraint firstAttribute="trailing" secondItem="DMH-yL-Ue7" secondAttribute="trailing" id="f7B-1I-UVj"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="687" y="471"/>
