@@ -191,10 +191,9 @@
 			};
 			buildConfigurationList = 5F963FC21B0C09F800F5B3BF /* Build configuration list for PBXProject "aamoji" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -361,7 +360,7 @@
 		5F963FE21B0C09F900F5B3BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 288H3WAR3W;
 				INFOPLIST_FILE = aamoji/Info.plist;
@@ -370,6 +369,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "us.twopointzero.aamoji-resurrected";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -377,7 +377,7 @@
 		5F963FE31B0C09F900F5B3BF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 288H3WAR3W;
 				INFOPLIST_FILE = aamoji/Info.plist;
@@ -386,6 +386,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "us.twopointzero.aamoji-resurrected";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

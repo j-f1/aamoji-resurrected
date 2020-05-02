@@ -53,14 +53,13 @@ class AamojiInserter: NSObject {
     private func _insertReplacements() {
         // make the change in sqlite:
         let db = try! Connection(_pathForDatabase())
-        var pk = try! db.scalar("SELECT max(Z_PK) FROM 'ZUSERDICTIONARYENTRY'") as? Int ?? 0
+        var pk = ((try? db.scalar("SELECT max(Z_PK) FROM 'ZUSERDICTIONARYENTRY'")) as? Int64) ?? 0
         let timestamp = Int64(NSDate().timeIntervalSince1970)
         for entry in aamojiEntries() {
-            // key, timestamp, with, replace
+            pk += 1
             let replace = entry[ReplacementShortcutKey] as! String
             let with = entry[ReplacementReplaceWithKey] as! String
             try! db.run("INSERT INTO 'ZUSERDICTIONARYENTRY' VALUES(?,1,1,0,0,0,0,?,NULL,NULL,NULL,NULL,NULL,?,?,NULL)", [pk, timestamp, with, replace])
-            pk += 1
         }
         
         // make the change in nsuserdefaults:
@@ -147,7 +146,11 @@ class AamojiInserter: NSObject {
         var results = [(String, Double)]()
         if let aliases = entry["aliases"] as? [String] {
             for alias in aliases {
-                results.append((alias, 3))
+                results.append((alias, 4))
+                let cleaned = alias.replacingOccurrences(of: #"[^a-z]"#, with: "", options: .regularExpression)
+                if cleaned != alias {
+                    results.append((cleaned, 3))
+                }
             }
         }
         if let description = entry["description"] as? String {
