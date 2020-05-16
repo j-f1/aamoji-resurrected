@@ -11,13 +11,16 @@
 		5F963FCF1B0C09F900F5B3BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F963FCE1B0C09F900F5B3BF /* Images.xcassets */; };
 		5F963FD21B0C09F900F5B3BF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F963FD01B0C09F900F5B3BF /* MainMenu.xib */; };
 		5F963FDE1B0C09F900F5B3BF /* aamojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F963FDD1B0C09F900F5B3BF /* aamojiTests.swift */; };
-		5F963FE81B0C0A1D00F5B3BF /* AamojiInserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F963FE71B0C0A1D00F5B3BF /* AamojiInserter.swift */; };
 		5F963FEA1B0C27C800F5B3BF /* emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F963FE91B0C27C800F5B3BF /* emoji.json */; };
 		5F963FEC1B0C2BE500F5B3BF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F963FEB1B0C2BE500F5B3BF /* Utilities.swift */; };
-		5F963FEE1B0C330D00F5B3BF /* AamojiInserter+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F963FED1B0C330D00F5B3BF /* AamojiInserter+HTML.swift */; };
+		5F963FEE1B0C330D00F5B3BF /* ShortcutListHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F963FED1B0C330D00F5B3BF /* ShortcutListHTML.swift */; };
 		5F963FF01B0C332C00F5B3BF /* ShortcutListTemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = 5F963FEF1B0C332B00F5B3BF /* ShortcutListTemplate.html */; };
 		5F963FF61B0C3A2C00F5B3BF /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 5F963FF51B0C3A2C00F5B3BF /* Icon.icns */; };
 		8524033E242F7EF1009B048F /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 8524033D242F7EF1009B048F /* SQLite */; };
+		854C8E4B245E057400AFFF94 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854C8E4A245E057400AFFF94 /* SwiftUI.framework */; };
+		854C8E4D245E057A00AFFF94 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 854C8E4C245E057A00AFFF94 /* AppKit.framework */; };
+		854C8E4F245E0F0400AFFF94 /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854C8E4E245E0F0400AFFF94 /* DragView.swift */; };
+		85D2454B245DEF7000B92A44 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D2454A245DEF7000B92A44 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,14 +42,17 @@
 		5F963FD71B0C09F900F5B3BF /* aamojiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aamojiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F963FDC1B0C09F900F5B3BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F963FDD1B0C09F900F5B3BF /* aamojiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aamojiTests.swift; sourceTree = "<group>"; };
-		5F963FE71B0C0A1D00F5B3BF /* AamojiInserter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AamojiInserter.swift; sourceTree = "<group>"; };
 		5F963FE91B0C27C800F5B3BF /* emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emoji.json; sourceTree = "<group>"; };
 		5F963FEB1B0C2BE500F5B3BF /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		5F963FED1B0C330D00F5B3BF /* AamojiInserter+HTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AamojiInserter+HTML.swift"; sourceTree = "<group>"; };
+		5F963FED1B0C330D00F5B3BF /* ShortcutListHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutListHTML.swift; sourceTree = "<group>"; };
 		5F963FEF1B0C332B00F5B3BF /* ShortcutListTemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ShortcutListTemplate.html; sourceTree = "<group>"; };
 		5F963FF51B0C3A2C00F5B3BF /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		8524033F242F8771009B048F /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
 		85240340242F8771009B048F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		854C8E4A245E057400AFFF94 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		854C8E4C245E057A00AFFF94 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		854C8E4E245E0F0400AFFF94 /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
+		85D2454A245DEF7000B92A44 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85D2454B245DEF7000B92A44 /* WebKit.framework in Frameworks */,
+				854C8E4D245E057A00AFFF94 /* AppKit.framework in Frameworks */,
+				854C8E4B245E057400AFFF94 /* SwiftUI.framework in Frameworks */,
 				8524033E242F7EF1009B048F /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +85,7 @@
 				5F963FC91B0C09F900F5B3BF /* aamoji */,
 				5F963FDA1B0C09F900F5B3BF /* aamojiTests */,
 				5F963FC81B0C09F900F5B3BF /* Products */,
+				85D24549245DEF7000B92A44 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,8 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				5F963FCC1B0C09F900F5B3BF /* AppDelegate.swift */,
-				5F963FE71B0C0A1D00F5B3BF /* AamojiInserter.swift */,
-				5F963FED1B0C330D00F5B3BF /* AamojiInserter+HTML.swift */,
+				854C8E4E245E0F0400AFFF94 /* DragView.swift */,
+				5F963FED1B0C330D00F5B3BF /* ShortcutListHTML.swift */,
 				5F963FEB1B0C2BE500F5B3BF /* Utilities.swift */,
 				5F963FF51B0C3A2C00F5B3BF /* Icon.icns */,
 				5F963FCE1B0C09F900F5B3BF /* Images.xcassets */,
@@ -128,6 +138,16 @@
 				5F963FDC1B0C09F900F5B3BF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		85D24549245DEF7000B92A44 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				854C8E4C245E057A00AFFF94 /* AppKit.framework */,
+				854C8E4A245E057400AFFF94 /* SwiftUI.framework */,
+				85D2454A245DEF7000B92A44 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,9 +259,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F963FEC1B0C2BE500F5B3BF /* Utilities.swift in Sources */,
-				5F963FEE1B0C330D00F5B3BF /* AamojiInserter+HTML.swift in Sources */,
-				5F963FE81B0C0A1D00F5B3BF /* AamojiInserter.swift in Sources */,
+				5F963FEE1B0C330D00F5B3BF /* ShortcutListHTML.swift in Sources */,
 				5F963FCD1B0C09F900F5B3BF /* AppDelegate.swift in Sources */,
+				854C8E4F245E0F0400AFFF94 /* DragView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,7 +404,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 288H3WAR3W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = aamoji/Info.plist;
@@ -393,7 +413,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "us.twopointzero.aamoji-resurrected";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -404,7 +424,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 288H3WAR3W;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = aamoji/Info.plist;
@@ -413,7 +433,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "us.twopointzero.aamoji-resurrected";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
