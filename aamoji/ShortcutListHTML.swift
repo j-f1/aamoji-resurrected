@@ -1,11 +1,3 @@
-//
-//  AamojiInserter+HTML.swift
-//  aamoji
-//
-//  Created by Nate Parrott on 5/19/15.
-//  Copyright (c) 2015 Nate Parrott. All rights reserved.
-//
-
 import Foundation
 
 let ReplacementShortcutKey = "replace"
